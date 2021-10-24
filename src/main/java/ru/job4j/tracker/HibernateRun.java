@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class HibernateRun {
@@ -14,18 +15,12 @@ public class HibernateRun {
                 .configure().build();
         try {
             SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Item item = create(new Item("Learn Hibernate"), sf);
-            System.out.println(item);
-            item.setName("Learn Hibernate 5.");
-            update(item, sf);
-            System.out.println(item);
-            Item rsl = findById(item.getId(), sf);
-            System.out.println(rsl);
-            delete(rsl.getId(), sf);
-            List<Item> list = findAll(sf);
-            for (Item it : list) {
-                System.out.println(it);
-            }
+            Item item1 = create(new Item("Learn Hibernate 1",
+                    LocalDateTime.now(), "Any text 1"), sf);
+            Item item2 = create(new Item("Learn Hibernate 2",
+                    LocalDateTime.now(), "Any text 2"), sf);
+            Item item3 = create(new Item("Learn Hibernate 3",
+                    LocalDateTime.now(), "Any text 3"), sf);
         }  catch (Exception e) {
             e.printStackTrace();
         } finally {

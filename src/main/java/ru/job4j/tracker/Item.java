@@ -17,12 +17,19 @@ public class Item {
     private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
+    private String description;
 
     public Item() {
     }
 
     public Item(String name) {
         this.name = name;
+    }
+
+    public Item(String name, LocalDateTime created, String description) {
+        this.name = name;
+        this.created = created;
+        this.description = description;
     }
 
     public Item(int id, String name, LocalDateTime created) {
