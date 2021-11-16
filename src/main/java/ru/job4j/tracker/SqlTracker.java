@@ -100,6 +100,24 @@ public class SqlTracker implements Store {
         return items;
     }
 
+    public List<Item> findAllByReact(Observe<Item> observe) {
+        List<Item> items = new ArrayList<>();
+        try (PreparedStatement statement = cn.prepareStatement("select * from items")) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    observe.receive(new Item(
+                            resultSet.getInt("id"),
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
+                    ));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return items;
+    }
+
     @Override
     public List<Item> findByName(String key) {
         List<Item> items = new ArrayList<>();

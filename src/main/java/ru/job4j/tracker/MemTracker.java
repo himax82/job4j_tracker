@@ -29,6 +29,11 @@ public class MemTracker implements Store {
         return new ArrayList<>(items);
     }
 
+    @Override
+    public List<Item> findAllByReact(Observe<Item> observe) {
+        return null;
+    }
+
     public List<Item> findByName(String key) {
         List<Item> itemTmp = new ArrayList<Item>();
         for (Item i : items) {

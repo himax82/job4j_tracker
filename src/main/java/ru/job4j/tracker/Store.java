@@ -13,6 +13,8 @@ public interface Store extends AutoCloseable {
 
     List<Item> findAll();
 
+    List<Item> findAllByReact(Observe<Item> observe);
+
     List<Item> findByName(String key);
 
     Item findById(int id);

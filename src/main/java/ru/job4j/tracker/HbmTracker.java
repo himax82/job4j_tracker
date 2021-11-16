@@ -73,6 +73,11 @@ public class HbmTracker implements Store, AutoCloseable {
     }
 
     @Override
+    public List<Item> findAllByReact(Observe<Item> observe) {
+        return null;
+    }
+
+    @Override
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
         session.beginTransaction();

@@ -18,12 +18,8 @@ public class FindAllAction implements UserAction {
     @Override
     public boolean execute(Input input, Store tracker) {
         out.println("=== Show all items ====");
-        List<Item> items = tracker.findAll();
-        if (items.size() > 0) {
-            for (Item item : items) {
-                out.println(item);
-            }
-        } else {
+        List<Item> items = tracker.findAllByReact(out::println);
+        if (items.size() == 0) {
             out.println("Хранилище еще не содержит заявок");
         }
         return true;

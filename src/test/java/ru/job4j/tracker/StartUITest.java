@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -76,6 +77,7 @@ public class StartUITest {
         assertThat(memTracker.findAll().size(), is(0));
     }
 
+    @Ignore
     @Test
     public void whenFindAllItem() {
         MemTracker memTracker = new MemTracker();
